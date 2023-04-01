@@ -20,6 +20,15 @@ export default function Home({posts}) {
           {posts.map((post) => (
            <PostCard key={post.node.slug} post={post}/>
           ))}
+          {posts.map((post) => (
+           <PostCard key={post.node.slug} post={post}/>
+          ))}
+          {posts.map((post) => (
+           <PostCard key={post.node.slug} post={post}/>
+          ))}
+          {posts.map((post) => (
+           <PostCard key={post.node.slug} post={post}/>
+          ))}
         </div>
         <div className='lg:col-span-4 col-span-1'>
             <div className='lg:sticky relative top-8'>
@@ -33,7 +42,7 @@ export default function Home({posts}) {
 }
 
 export async function getStaticProps(){
-  const posts = await getPosts() || [];
+  const posts = (await getPosts()) || [];
 
   return {
     props:{ posts }

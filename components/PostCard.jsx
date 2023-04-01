@@ -4,7 +4,6 @@ import React from 'react'
 import { BiCalendarWeek } from 'react-icons/bi'
 
 const PostCard = ({post : {node}}) => {
-  console.log(node)
   
   return (
     <div className='bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8'>
@@ -41,8 +40,15 @@ const PostCard = ({post : {node}}) => {
             </div>
         </div>
         <p className='text-center text-lg text-gray-700 font-normal px-4 lg:px-0 mb-8'>
-
+          {node.excerpt}
         </p>
+          <div className='text-center'>
+              <Link href={`/post/${node.slug}`}>
+                  <span className='transition duration-500 transform hover:-translate-y-1 inline-block bg-pink-600 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer'> 
+                    Continue Reading
+                  </span>
+              </Link>
+          </div>
     </div>
   )
 }
