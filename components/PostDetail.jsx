@@ -3,50 +3,11 @@ import React from 'react'
 import { BiCalendarWeek } from 'react-icons/bi'
 // import SyntaxHighlighter from 'react-syntax-highlighter';
 // import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import { CodeBlock } from "react-code-blocks";
+import { CodeBlock , monoBlue, ocean , shadesOfPurple , tomorrowNightBlue} from "react-code-blocks";
 
 const PostDetail = ({ post }) => {
-  // console.log(post)
-
-  const getContentFragment = (index, text, obj, type) => {
-    let modifiedText = text;
-
-    if (obj) {
-      if (obj.bold) {
-        modifiedText = (<b key={index}>{text}</b>);
-      }
-
-      if (obj.italic) {
-        modifiedText = (<em key={index}>{text}</em>);
-      }
-
-      if (obj.underline) {
-        modifiedText = (<u key={index}>{text}</u>);
-      }
-    }
-
-    switch (type) {
-      case 'heading-three':
-        return <h3 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h3>;
-      case 'paragraph':
-        return <p key={index} className="mb-8">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
-      case 'heading-four':
-        return <h4 key={index} className="text-md font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
-      case 'image':
-        return (
-          <img
-            key={index}
-            alt={obj.title}
-            height={obj.height}
-            width={obj.width}
-            src={obj.src}
-          />
-        );
-      default:
-        return modifiedText;
-    }
-  };
-
+  console.log(post)
+// 
 
   return (
     <div className='bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8'>
@@ -80,15 +41,15 @@ const PostDetail = ({ post }) => {
         </div>
         <h1 className='mb-8 text-3xl font-semibold'>{post.title}</h1>
         {post.content.raw.children.map((item, i) => {
-          console.log(item.children[0].text)
+      
           return <div className='my-4'>
             {item.type === "paragraph" && <p>{item.children[0].text}</p>}
-            {item.type === "code-block" && <div className=' ml-3 p-2 -mt-2 text-sm'>
+            {item.type === "code-block" && <div className=' ml-4 mb-6 -mt-2 text-sm'>
               <CodeBlock
                 text={item.children[0].text}
                 language='javascript'
                 showLineNumbers={true}
-                theme='atom-one-dark'
+                theme={tomorrowNightBlue}
               />
             </div>
             }
