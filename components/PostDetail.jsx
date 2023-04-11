@@ -44,6 +44,7 @@ const PostDetail = ({ post }) => {
       
           return <div className='my-4'>
             {item.type === "paragraph" && <p>{item.children[0].text}</p>}
+            {item.children[1] && item.children[1].type=== 'link' && <a target='_blank' href={item.children[1].href} className='text-sm underline'>{item.children[1].title}</a>} 
             {item.type === "code-block" && <div className=' ml-4 mb-6 -mt-2 text-sm'>
               <CodeBlock
                 text={item.children[0].text}
